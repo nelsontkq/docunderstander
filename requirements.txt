@@ -3,6 +3,8 @@ torch
 torchvision
 torchaudio
 fastapi
+transformers
+uvicorn
 
 sentencepiece
 Pillow

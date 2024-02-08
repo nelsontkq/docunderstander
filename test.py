@@ -11,8 +11,8 @@ def get_answers(filename):
         "document": base64_file,
         "items": [
             {
-                "question": "What is the Interest Rate?",
-                "field": "interest_rate",
+                "question": "What is the Loan Amount?",
+                "field": "loan_amount",
                 "field_type": "string"
             },
             {
