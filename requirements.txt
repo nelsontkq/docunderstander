@@ -4,5 +4,6 @@ torchvision
 torchaudio
 fastapi
 
+sentencepiece
 Pillow
-pytesseract
+protobuf
