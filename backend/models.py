@@ -10,5 +10,5 @@ class DocumentQuestion(BaseModel):
 
 class DocumentQA(BaseModel):
     document_type: str = Field(..., title="The type of document", examples=["closing_disclosure"])
-    document: str = Field(..., title="The base64 to process")
+    document: Base64Bytes = Field(..., title="The base64 to process")
     items: list[DocumentQuestion] = Field(..., title="The list of questions to ask")

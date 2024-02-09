@@ -8,6 +8,7 @@ import re
 
 processor = DonutProcessor.from_pretrained("naver-clova-ix/donut-base-finetuned-docvqa")
 model = VisionEncoderDecoderModel.from_pretrained(
+    # "nelsntk/donut-docvqa-v3"
     "naver-clova-ix/donut-base-finetuned-docvqa"
 )
 device = "cuda" if torch.cuda.is_available() else "cpu"

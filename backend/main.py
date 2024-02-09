@@ -6,12 +6,6 @@ from backend.models import DocumentQA
 
 app = FastAPI()
 
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
 @app.post("/documentqna")
 def read_item(request: DocumentQA):
     body = request.model_dump()
