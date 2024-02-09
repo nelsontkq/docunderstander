@@ -1,8 +1,8 @@
 from typing import Union
 
 from fastapi import FastAPI
-from backend.lm.questionanswering import answer_questions
-from backend.models import DocumentQA
+from app.lm.questionanswering import answer_questions
+from app.models import DocumentQA
 
 app = FastAPI()
 

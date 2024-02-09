@@ -4,7 +4,7 @@ import time
 from pdf2image import convert_from_path
  
 from sys import argv
-url = "http://146.235.198.112:8000/documentqna"
+url = "http://localhost:8000/documentqna"
 
 def get_answers(filename):
     if filename.endswith(".pdf"):
@@ -18,14 +18,14 @@ def get_answers(filename):
         "document": base64_file,
         "items": [
             {
-                "question": "What is the Order Number?",
-                "field": "order_number",
+                "question": "What is the Loan Amount?",
+                "field": "loan_amount",
                 "field_type": "string"
             },
             {
-                "question": "What is the total?",
-                "field": "total",
-                "field_type": "string"
+                "question": "What is the Closing Date?",
+                "field": "closing_date",
+                "field_type": "iso_date"
             }
         ]
     }
