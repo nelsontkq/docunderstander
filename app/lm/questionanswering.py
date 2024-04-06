@@ -7,10 +7,8 @@ from dateutil.parser import parse
 import re
 
 processor = DonutProcessor.from_pretrained("naver-clova-ix/donut-base-finetuned-docvqa")
-model = VisionEncoderDecoderModel.from_pretrained(
-    # "nelsntk/donut-docvqa-v3"
-    "naver-clova-ix/donut-base-finetuned-docvqa"
-)
+model = VisionEncoderDecoderModel.from_pretrained("naver-clova-ix/donut-base-finetuned-docvqa")
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model.to(device)
 
@@ -28,8 +26,8 @@ def prompt(base64_image: str, user_inputs: list[str]):
         raise ValueError("Cannot identify image file. Ensure that the image data is valid and properly encoded.")
     pixel_values = processor(image, return_tensors="pt").pixel_values
     for user_input in user_inputs:
-        prompt = f"<s_docvqa><s_question>{user_input}</s_question><s_answer>"
-        decoder_input_ids = processor.tokenizer(prompt, add_special_tokens=False, return_tensors="pt").input_ids
+        user_prompt = f"<s_docvqa><s_question>{user_input}</s_question><s_answer>"
+        decoder_input_ids = processor.tokenizer(user_prompt, add_special_tokens=False, return_tensors="pt").input_ids
         outputs = model.generate(
             pixel_values.to(device),
             decoder_input_ids=decoder_input_ids.to(device),
@@ -50,9 +48,12 @@ def field_map(field_type: str, answer: str):
     if field_type == "string":
         return answer
     if field_type == "iso_date":
-        return parse(answer).isoformat()
+        try:
+            return parse(answer).isoformat()
+        except:
+            return answer
     if field_type == "number":
-        return re.sub(r"[^\d\.]", "", answer)
+        return re.sub(r"[^\d.]", "", answer)
     return answer
 
 

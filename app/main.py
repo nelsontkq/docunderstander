@@ -6,6 +6,7 @@ from app.models import DocumentQA
 
 app = FastAPI()
 
+
 @app.post("/documentqna")
 def read_item(request: DocumentQA):
     body = request.model_dump()
