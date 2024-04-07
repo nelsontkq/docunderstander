@@ -1,5 +1,6 @@
 from typing import Union
 
+import torch
 from fastapi import FastAPI
 from app.lm.questionanswering import answer_questions
 from app.models import DocumentQA
