@@ -8,3 +8,6 @@ python-dateutil
 pydantic
 requests
 hypercorn
+tensorflow[and-cuda]
+sentencepiece
+scipy
