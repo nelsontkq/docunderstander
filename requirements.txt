@@ -10,4 +10,3 @@ python-dateutil
 pydantic
 requests
 hypercorn
-scipy
