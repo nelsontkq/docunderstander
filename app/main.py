@@ -5,7 +5,8 @@ from app.lm.questionanswering import answer_questions
 from app.models import DocumentQA
 
 app = FastAPI()
-
+if not torch.cuda.is_available():
+    raise ValueError("Cuda not enabled!")
 
 @app.post("/documentqna")
 def read_item(request: DocumentQA):
